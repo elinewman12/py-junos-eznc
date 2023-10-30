@@ -1144,6 +1144,10 @@ class Device(_Connection):
             *OPTIONAL* To choose between SAX and DOM parsing.
             default is ``False`` to use DOM.
             Select ``True`` to use SAX (if SAX input is provided).
+        
+        :param str bind_addr:
+            *OPTIONAL* Local source address to bind socket to before
+            connection. Default is no source address if None
 
         """
 
@@ -1191,6 +1195,7 @@ class Device(_Connection):
             # user can get updated by ssh_config
             self._ssh_config = kvargs.get('ssh_config')
             self._sshconf_lkup()
+            self.bind_addr = kvargs.get('bind_addr')
             # but if user or private key is explicit from call, then use it.
             self._auth_user = kvargs.get('user') or self._conf_auth_user or \
                 self._auth_user
@@ -1294,6 +1299,7 @@ class Device(_Connection):
                 key_filename=self._ssh_private_key_file,
                 allow_agent=allow_agent,
                 ssh_config=self._sshconf_lkup(),
+                bind_addr = self.bind_addr,
                 device_params={'name': 'junos',
                                'local': self.__class__.ON_JUNOS,
                                'use_filter': self._use_filter})
