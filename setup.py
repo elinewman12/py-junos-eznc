@@ -9,7 +9,7 @@ if sys.version_info[:2] == (2, 6):
     install_reqs.append('importlib>=1.0.3')
 
 setup(
-    name="junos-eznc",
+    name="junos-eznc-2.3.0",
     namespace_packages=['jnpr'],
     version="2.3.0",
     author="Jeremy Schulman, Nitin Kumar, Rick Sherman, Stacy Smith",
@@ -17,7 +17,7 @@ setup(
     description=("Junos 'EZ' automation for non-programmers"),
     license="Apache 2.0",
     keywords="Junos NETCONF networking automation",
-    url="http://www.github.com/Juniper/py-junos-eznc",
+    url="http://www.github.com/elinewman12/py-junos-eznc",
     package_dir={'': 'lib'},
     packages=find_packages('lib'),
     package_data={
